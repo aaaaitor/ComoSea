@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -13,16 +11,14 @@ public class PlayerController : MonoBehaviour
     private float jumpForce;
 
     private Vector3 direction;
-    private double jumpBlockTime;
-    float moveY;
-    float moveX;
+    private float moveY;
+    private float moveX;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         playerRB = GetComponent<Rigidbody2D>();
-        jumpBlockTime = 1f;
     }
 
     /*
@@ -34,10 +30,29 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        
+        Movement();
+        Jump();
     }
 
-    void FixedUpdate()
+    /// <summary>
+    /// Method to make the player jump when the SPACE keys is pressed. Also checks the vertical velocity of 
+    /// the player's rigidbody and only allows the player to jump when it's 0 (when the player is in contact with
+    /// something) so the player isn't able to fly by jumping continuously.
+    /// </summary>
+    void Jump()
+    {
+        if (playerRB.velocity.y != 0){ return; }
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            playerRB.AddForce(new Vector2(playerRB.velocity.x, jumpForce));
+        }
+    }
+
+    /// <summary>
+    /// Method to control player movement and set the correct sprite animation.
+    /// </summary>
+    void Movement()
     {
         moveX = Input.GetAxisRaw("Horizontal");
         moveY = Input.GetAxisRaw("Vertical");
@@ -56,24 +71,5 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetFloat("Speed", 0);
         }
-
-        if (jumpBlockTime <= 0f && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)))
-        {
-            Jump();
-            jumpBlockTime = 1f;
-        }
-        else
-        {
-            jumpBlockTime -= Time.deltaTime;
-        }
-    }
-
-    /// <summary>
-    /// Method to make the player jump when the W or the SPACE keys are pressed.
-    /// </summary>
-    void Jump()
-    {
-        Debug.Log("jumping!");
-        playerRB.velocity = new Vector2(direction.x, moveY * jumpForce);
     }
 }
