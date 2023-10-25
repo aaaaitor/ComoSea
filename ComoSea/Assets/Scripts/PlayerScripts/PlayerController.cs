@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// This class controls the player movement and the way the sprites interact with inputs.
+/// </summary>
 public class PlayerController : MonoBehaviour
 {
     private Animator animator;
