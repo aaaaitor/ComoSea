@@ -22,6 +22,8 @@ public class PlayerStats : MonoBehaviour
     [HideInInspector]
     public float actualDamage;
     [HideInInspector]
+    public float actualJumpForce;
+    [HideInInspector]
     public float actualProjectileSpeed;
     [HideInInspector]
     public float actualMagnetism;
@@ -70,6 +72,8 @@ public class PlayerStats : MonoBehaviour
         actualRecover = playerData.HealthRecover;
         actualSpeed = playerData.MovementSpeed;
         actualDamage = playerData.Damage;
+        actualJumpForce = playerData.JumpForce;
+
         actualProjectileSpeed = playerData.ProjectileSpeed;
         actualMagnetism = playerData.Magnetism;
         invincible = false;
@@ -218,6 +222,8 @@ public class PlayerStats : MonoBehaviour
     /// <param name="weapon">Weapon to be spawned.</param>
     public void SpawnWeapon(GameObject weapon)
     {
+        if (weapon == null) { return; }
+
         GameObject spawnedWeapon = Instantiate(weapon, transform.position, Quaternion.identity);
         spawnedWeapon.transform.SetParent(transform);
         weapons.Add(spawnedWeapon);

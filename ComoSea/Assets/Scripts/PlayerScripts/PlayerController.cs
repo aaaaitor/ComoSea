@@ -8,10 +8,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private Rigidbody2D playerRB;
 
-    [SerializeField]
-    private float speed;
-    [SerializeField]
-    private float jumpForce;
+    PlayerStats playerStats;
 
     private Vector3 direction;
     private float moveY;
@@ -22,6 +19,7 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         playerRB = GetComponent<Rigidbody2D>();
+        playerStats = GetComponent<PlayerStats>();
     }
 
     /*
@@ -48,7 +46,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
-            playerRB.AddForce(new Vector2(playerRB.velocity.x, jumpForce));
+            playerRB.AddForce(new Vector2(playerRB.velocity.x, playerStats.actualJumpForce));
         }
     }
 
@@ -68,7 +66,7 @@ public class PlayerController : MonoBehaviour
 
             // Vertical movement set to 0 so the player cant move in the Y axis
             direction = (Vector3.up * 0 + Vector3.right * moveX).normalized;
-            transform.Translate(direction * speed * Time.deltaTime);
+            transform.Translate(direction * playerStats.actualSpeed * Time.deltaTime);
         }
         else
         {

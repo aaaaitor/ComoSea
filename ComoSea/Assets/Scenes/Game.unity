@@ -459,6 +459,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1271356924 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3518062218989422848, guid: 81967180fc166474ba3ba067262e6a9d, type: 3}
+  m_PrefabInstance: {fileID: 9133151392143377362}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1473381401
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,6 +671,35 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6443027431443803939, guid: 81967180fc166474ba3ba067262e6a9d, type: 3}
   m_PrefabInstance: {fileID: 9133151392143377362}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1833218155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271356924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 816d8e0df9caba14da2370400d06caae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actualHealth: 0
+  actualMaxHealth: 0
+  actualRecover: 0
+  actualSpeed: 0
+  actualDamage: 0
+  actualJumpForce: 0
+  actualProjectileSpeed: 0
+  actualMagnetism: 0
+  weapons: []
+  experience: 0
+  level: 1
+  experienceLimit: 1
+  levelRanges:
+  - initialLevel: 0
+    finalLevel: 2
+    experienceLimitIncrease: 100
+  invincibleDuration: 0
 --- !u!1 &2081566427
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,7 +839,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3518062218989422848, guid: 81967180fc166474ba3ba067262e6a9d, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 1833218155}
   m_SourcePrefab: {fileID: 100100000, guid: 81967180fc166474ba3ba067262e6a9d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

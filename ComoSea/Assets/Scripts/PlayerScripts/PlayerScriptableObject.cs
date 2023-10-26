@@ -34,6 +34,10 @@ public class PlayerScriptableObject : ScriptableObject
     float damage;
     public float Damage { get => damage; private set => damage = value; }
 
+    [SerializeField]
+    float jumpForce;
+    public float JumpForce { get => jumpForce; private set => jumpForce = value; }
+
 
     //Optional attributes. Attributes the player only uses in certain situations.
     [SerializeField]
